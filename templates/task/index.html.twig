@@ -1,7 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello TaskController!{% endblock %}
+{% block title %}Ajouter une tâche{% endblock %}
 
 {% block body %}
-
+    <h1>Ajouter une tâche au projet {{ project.name }}</h1>
+    <div class="container">
+        {{ form_start(formTask) }}
+        {{ form_widget(formTask) }}
+        <input type="submit" value="Créer la tâche" class="btn btn-info">
+        {{ form_end(formTask) }}
+    </div>
 {% endblock %}

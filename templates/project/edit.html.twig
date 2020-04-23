@@ -26,7 +26,7 @@
 
     </div>
     <div class="container pt-5">
-        <button class="btn btn-info"><a href="{{ path('add_task') }}">Ajouter une tâche</a></button>
+        <button class="btn btn-info"><a href="{{ path('add_task', {id: project.id})}}">Ajouter une tâche</a></button>
         <table class="table table-hover">
             <thead>
             <tr>
