@@ -32,9 +32,7 @@ class ApiController extends AbstractController
         $repository = $this->getDoctrine()->getRepository(Project::class);
         $project = $repository->findOneBy(['id' => $id]);
 
-
-
-        $serialized_projects = $serializer->serialize($project, 'json', ['groups' => ['project']]);
-        return new JsonResponse($serialized_projects, 200, [], true);
+        $serialized_project = $serializer->serialize($project, 'json', ['groups' => ['project']]);
+        return new JsonResponse($serialized_project, 200, [], true);
     }
 }
