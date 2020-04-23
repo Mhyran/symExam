@@ -23,7 +23,7 @@
                 <td>{{project.statut}}</td>
                 <td>nb tâches</td>
                 <td>{{project.startedAt|date('d/m/Y')}}</td>
-                <td><a href="#">Gérer</a></td>
+                <td><a href="{{ path('edit_project', {id: project.id})}}">Gérer</a></td>
                 </tr>
                 {% endfor %}
             </tbody>

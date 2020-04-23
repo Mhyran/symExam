@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid pt-3 text-center">
+        <div class="row">
+            <div class="col-6">
+                <h1>Projet : {{ project.name }}</h1>
+                <p>Créé le : {{ project.startedAt|date('d/m/Y') }}</p>
+            </div>
+            <div class="col-6 text-center">
+                <p>Statut du projet</p>
+                <form>
+                    <select class="form-control w-25 d-inline-block" name="statut">
+                        <option>Nouveau</option>
+                        <option>En cours</option>
+                        <option>Terminée</option>
+                    </select>
+                    <input class="btn btn-warning" type="submit" value="Modifier">
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <div class="container pt-5">
+        <button class="btn btn-info"><a href="{{ path('add_task') }}">Ajouter une tâche</a></button>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Nom de la tâche</th>
+                <th scope="col">Description</th>
+                <th scope="col">Ajouté le</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr class="table-secondary">
+                    <th scope="row"></th>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+

@@ -57,9 +57,13 @@ class ProjectController extends AbstractController
     /**
      * @Route("/admin/project/edit/{id}", name="edit_project")
      */
-
-    public function edit()
+    public function edit(Request $request, $id)
     {
-        # code...
+        $repository = $this->getDoctrine()->getRepository(Project::class);
+        $project = $repository->findOneBy(['id' => $id]);
+
+        return $this->render('project/edit.html.twig', [
+            'project' => $project
+        ]);
     }
 }
