@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Project;
+use App\Entity\Task;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,5 +24,17 @@ class ApiController extends AbstractController
         return new JsonResponse($serialized_projects, 200, [], true);
     }
 
+    /**
+     * @Route("/api/project/{id}", name="api_detail_project", methods={"GET"})
+     */
+    public function details($id, SerializerInterface $serializer)
+    {
+        $repository = $this->getDoctrine()->getRepository(Project::class);
+        $project = $repository->findOneBy(['id' => $id]);
 
+
+
+        $serialized_projects = $serializer->serialize($project, 'json', ['groups' => ['project']]);
+        return new JsonResponse($serialized_projects, 200, [], true);
+    }
 }

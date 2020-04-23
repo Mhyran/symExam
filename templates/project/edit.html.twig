@@ -14,13 +14,13 @@
             </div>
             <div class="col-6 text-center">
                 <p>Statut du projet</p>
-                <form>
+                <form method="post" action="">
                     <select class="form-control w-25 d-inline-block" name="statut">
-                        <option>Nouveau</option>
-                        <option>En cours</option>
-                        <option>Terminée</option>
+                        <option name="Nouveau">Nouveau</option>
+                        <option name="En Cours">En cours</option>
+                        <option name="Terminée">Terminée</option>
                     </select>
-                    <input class="btn btn-warning" type="submit" value="Modifier">
+                    <input class="btn btn-warning" type="submit" name="edit">
                 </form>
             </div>
         </div>

@@ -57,7 +57,7 @@ class ProjectController extends AbstractController
     /**
      * @Route("/admin/project/edit/{id}", name="edit_project")
      */
-    public function edit(Request $request, $id)
+    public function edit(Request $request, $id, EntityManagerInterface $entityManager)
     {
         $repository = $this->getDoctrine()->getRepository(Project::class);
         $project = $repository->findOneBy(['id' => $id]);
@@ -65,7 +65,17 @@ class ProjectController extends AbstractController
         $taskRepository = $this->getDoctrine()->getRepository(Task::class);
         $tasks = $taskRepository->findBy(['project' => $id]);
 
+        if ($request->request->get('edit')){
+            $statut = $request->request->get('statut');
+            $project->setStatut($statut);
+            if ($statut === 'Terminée'){
+                $project->setEndedAt(new \DateTime());
+            }
+            $entityManager->persist($project);
+            $entityManager->flush();
 
+            return $this->redirectToRoute('project_list');
+        }
 
         return $this->render('project/edit.html.twig', [
             'project' => $project,
