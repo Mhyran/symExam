@@ -10,6 +10,7 @@
             <div class="col-6">
                 <h1>Projet : {{ project.name }}</h1>
                 <p>Créé le : {{ project.startedAt|date('d/m/Y') }}</p>
+                <p>Nombre de tâche : {{ tasks|length }}</p>
             </div>
             <div class="col-6 text-center">
                 <p>Statut du projet</p>
@@ -36,11 +37,13 @@
             </tr>
             </thead>
             <tbody>
+            {% for task in tasks %}
                 <tr class="table-secondary">
-                    <th scope="row"></th>
-                    <td></td>
-                    <td></td>
+                    <th scope="row">{{task.title}}</th>
+                    <td>{{task.description}}</td>
+                    <td>{{task.createdAt|date('d/m/Y')}}</td>
                 </tr>
+            {% endfor %}
             </tbody>
         </table>
     </div>

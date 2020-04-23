@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Project;
+use App\Entity\Task;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,7 +29,6 @@ class ProjectController extends AbstractController
     /**
      * @Route("/admin/project/add", name="add_project")
      */
-
     public function add(Request $request, EntityManagerInterface $entityManager)
     {
         $project = new Project();
@@ -62,8 +62,14 @@ class ProjectController extends AbstractController
         $repository = $this->getDoctrine()->getRepository(Project::class);
         $project = $repository->findOneBy(['id' => $id]);
 
+        $taskRepository = $this->getDoctrine()->getRepository(Task::class);
+        $tasks = $taskRepository->findBy(['project' => $id]);
+
+
+
         return $this->render('project/edit.html.twig', [
-            'project' => $project
+            'project' => $project,
+            'tasks' => $tasks
         ]);
     }
 }
