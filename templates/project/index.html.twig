@@ -1,20 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProjectController!{% endblock %}
+{% block title %}Project list{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/html/SymExam/src/Controller/ProjectController.php'|file_link(0) }}">src/Controller/ProjectController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/html/SymExam/templates/project/index.html.twig'|file_link(0) }}">templates/project/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <h1 class="text-center p-3">Projets</h1>
+    <div class="container">
+        <button class="btn btn-secondary mb-3"><a href="{{ path('add_project') }}">Ajouter un projet</a></button>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Nom du projet</th>
+                <th scope="col">Statut</th>
+                <th scope="col">Tâches</th>
+                <th scope="col">Ajouté le</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for project in projects %}
+                <tr class="table-secondary"> 
+                <th scope="row">{{project.name}}</th>
+                <td>{{project.statut}}</td>
+                <td>nb tâches</td>
+                <td>{{project.startedAt|date('d/m/Y')}}</td>
+                <td><a href="#">Gérer</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container pt-5">
+        <h1 class="text-center">Ajouter un projet</h1>
+        {{ form_start(formProject) }}
+        {{ form_row(formProject.name) }}
+        <input class="btn btn-info" type="submit" value="Ajouter">
+        {{ form_end(formProject) }}
+    </div>
+
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+

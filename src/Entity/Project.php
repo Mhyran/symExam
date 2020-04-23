@@ -24,6 +24,11 @@ class Project
     private $name;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $statut;
+
+    /**
      * @ORM\Column(type="datetime")
      */
     private $startedAt;
@@ -82,6 +87,16 @@ class Project
         $this->endedAt = $endedAt;
 
         return $this;
+    }
+
+    public function getStatut()
+    {
+        return $this->statut;
+    }
+
+    public function setStatut($statut): void
+    {
+        $this->statut = $statut;
     }
 
     /**
